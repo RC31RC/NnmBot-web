@@ -236,4 +236,76 @@ declare namespace Api {
       timeout: number
     }
   }
+
+  /** 机器人管理类型 */
+  namespace BotManage {
+    type BotPlatform = 'ONEBOT' | 'QQ_OFFICIAL'
+
+    type RuntimeStatus =
+      | 'PENDING_RESTART'
+      | 'DISABLED'
+      | 'DISCONNECTED'
+      | 'CONNECTING'
+      | 'CONNECTED'
+      | 'ERROR'
+
+    interface BotInstance {
+      id: number
+      platform: BotPlatform
+      instanceId: string
+      displayName: string
+      botAccountId: string
+      enabled: boolean
+      connectionUrl?: string
+      accessTokenConfigured: boolean
+      reconnectIntervalSeconds?: number
+      appId?: string
+      clientSecretConfigured: boolean
+      tokenUrl?: string
+      apiBaseUrl?: string
+      gatewayUrl?: string
+      intents?: number
+      gatewayConnectTimeoutSeconds?: number
+      reconnectDelaySeconds?: number
+      runtimeStatus: RuntimeStatus
+      statusChangedAt?: string
+      lastError?: string
+      createdAt: string
+      updatedAt: string
+    }
+
+    interface OneBotSaveRequest {
+      instanceId: string
+      displayName: string
+      botAccountId: string
+      enabled: boolean
+      connectionUrl: string
+      accessToken?: string
+      reconnectIntervalSeconds: number
+    }
+
+    interface QqOfficialSaveRequest {
+      instanceId: string
+      displayName: string
+      enabled: boolean
+      appId: string
+      clientSecret?: string
+      tokenUrl: string
+      apiBaseUrl: string
+      gatewayUrl?: string
+      intents: number
+      gatewayConnectTimeoutSeconds: number
+      reconnectDelaySeconds: number
+    }
+
+    interface OneBotProbeRequest {
+      instanceId?: number
+      connectionUrl?: string
+      accessToken?: string
+    }
+
+    interface OneBotProbeResponse {
+      botAccountId: string
+    }
+  }
 }

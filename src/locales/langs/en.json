@@ -308,6 +308,10 @@
       "menu32": "Menu 3-2",
       "menu321": "Menu 3-2-1"
     },
+    "bot": {
+      "title": "Bot Management",
+      "instance": "Bot Instances"
+    },
     "safeguard": {
       "title": "Safeguard",
       "server": "Server"
